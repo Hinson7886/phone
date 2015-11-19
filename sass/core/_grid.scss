@@ -1,0 +1,66 @@
+/* Grid */
+
+// Grid Variables
+$grid-width: 1200px !default;
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+$grid-generate: true !default;
+$grid-column-prefix: 'column-' !default;
+$grid-row-prefix: 'row' !default;
+$grid-push-prefix: 'push-' !default;
+
+// Mixins to use for Sass based grid
+@mixin row ($top: 0, $bottom: 0) {
+	margin: $top auto $bottom auto;
+	width: 100%;
+	position: relative;
+	@include clearfix();
+	@include respond($tablet) {
+		width: 750px;
+	}
+	@include respond($laptop) {
+		width: 970px;
+	}
+	@include respond($desktop) {
+		width: 1170px;
+	}
+}
+
+@mixin column ($width: $grid-columns) {
+	width: 100%;
+	float: none;
+	margin: 0;
+	@include clearfix();
+  @include respond($tablet) {
+  	width: (100% / $grid-columns) * $width;
+		min-height: 1px;
+		position: relative;
+		margin: 0;
+		padding: 0 $grid-gutter/2;
+		@if $width == 1 {
+	    padding: 0;
+	    @include clearfix();
+	  } @else {
+	  	float: left;
+	  }
+  }
+}
+
+@mixin push ($push: 1) {
+	margin-left: (100% / $grid-columns) * $push;
+}
+
+// Create classes for markup based grid
+@if $grid-generate {
+	.#{$grid-row-prefix} {
+		@include row;
+	}
+	@for $i from 1 through $grid-columns {
+		.#{$grid-column-prefix}#{$i} {
+			@include column($i);
+		}
+		.#{$grid-push-prefix}#{$i} {
+			@include push($i);
+		}
+	}
+}

@@ -1,0 +1,74 @@
+// Font mixins
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-default ($weight: 400, $style: normal) {
+  font-family: $font-default;
+  font-weight: $weight;
+  font-style: $style;
+  @include font-smoothing;
+}
+
+// Responsive queries
+@mixin respond ($media) {
+  @media #{$media} {
+    @content;
+  }
+}
+
+// Image for retina
+@mixin image-2x ($image, $width, $height) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+    background-image: url($image);
+    @include background-size($width $height);
+  }
+}
+
+// Clearfix
+@mixin clearfix {
+	*zoom: 1;
+  &:after {
+    content: '';
+    display: table;
+    line-height: 0;
+    clear: both;
+  }
+}
+
+// Calc function with prefixes
+@mixin calc ($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+// Animation
+@mixin animation ($name, $duration: 1000ms, $iterations: infinite, $timing-function: ease, $delay: 0ms, $fill-mode: both) {
+  -webkit-animation: $name $duration $iterations $timing-function $delay $fill-mode;
+  -moz-animation: $name $duration $iterations $timing-function $delay $fill-mode;
+  -o-animation: $name $duration $iterations $timing-function $delay $fill-mode;
+  animation: $name $duration $iterations $timing-function $delay $fill-mode;
+}
+
+// Placeholder color
+@mixin placeholder ($color, $opacity: 1) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+}

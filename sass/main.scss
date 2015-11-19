@@ -1,0 +1,24 @@
+// Compass
+@import 'compass';
+@import 'compass/reset';
+
+// Mixins and Settings Sass Files
+@import 'partials/settings';
+@import 'partials/mixins';
+
+// Vendor Sass Files
+@import 'vendor/animate/animate';
+@import 'vendor/fancybox';
+
+// Core Setup Sass Files
+@import 'core/normalize';
+@import 'core/grid';
+@import 'core/global';
+@import 'core/typography';
+
+// Layout Sass Files
+@import 'layout/header';
+@import 'layout/footer';
+
+// Pages Sass Files
+@import 'pages/front';

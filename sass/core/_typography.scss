@@ -1,0 +1,56 @@
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	color: $blue;
+	margin-bottom: 1rem;
+}
+
+h1 {
+	font-size: 3.6rem;
+}
+
+h2 {
+	font-size: 3.0rem;
+}
+
+h3 {
+	font-size: 2.1rem;
+}
+
+p {
+	margin-bottom: 1rem;
+	font-weight: 300;
+}
+
+a {
+	text-decoration: none;
+	@include transition(0.4s);
+}
+
+.button {
+	display: inline-block;
+	font-weight: 700;
+	font-size: 1.8rem;
+	color: $blue;
+	height: 60px;
+	padding: 20px 60px;
+	border: 2px solid $blue;
+	text-transform: uppercase;
+	@include border-radius(60px);
+	@include respond($laptop) {
+		font-size: 2.1rem;
+		padding: 18px 60px;
+	}
+	&:hover {
+		background: $blue;
+		color: white;
+	}
+	&.white {
+		color: white;
+		border-color: white;
+		&:hover {
+			background: white;
+			color: $blue;
+		}
+	}
+}

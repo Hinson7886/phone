@@ -1,0 +1,102 @@
+/* Header */
+.header {
+	height: 100px;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 0 20px;
+	@include box-shadow(0 2px 4px rgba(black, 0.1));
+	.logo {
+		width: 50%;
+		float: left;
+		@include respond($laptop) {
+			@include column(2);
+		}
+		a {
+			font-size: 3.0rem;
+			font-weight: 700;
+			color: $grey;
+			line-height: 100px;
+			&:hover {
+				color: $blue;
+			}
+			.highlighted {
+				color: $blue;
+			}
+		}
+	}
+	.navigation {
+		display: none;
+		position: fixed;
+		background: white;
+		z-index: 999;
+		top: 120px;
+		left: 50%;
+		width: 340px;
+		margin-left: -170px;
+		padding: 0 20px;
+		@include border-radius(3px);
+		@include box-shadow(0 0 50px rgba(black, 0.3));
+		@include respond($laptop) {
+			display: block !important;
+			position: static;
+			@include column(10);
+			box-shadow: none;
+			top: 0;
+			left: 0;
+		}
+		.menu {
+			@include respond($laptop) {
+				float: right;
+			}
+			.item {
+				border-bottom: 1px solid #e0e0e0;
+				text-align: center;
+				@include respond($laptop) {
+					float: left;
+					height: 100px;
+					margin-left: 60px;
+					text-align: left;
+					border-bottom: 0;
+				}
+				a {
+					padding: 20px 0;
+					display: block;
+					color: $grey;
+					font-size: 2.4rem;
+					@include respond($laptop) {
+						line-height: 100px;
+						padding: 0;
+						display: inline;
+					}
+					&:hover {
+						color: $blue;
+					}
+				}
+				&.active {
+					a {
+						color: $blue;
+					}
+				}
+			}
+		}
+	}
+	.mobile-toggle {
+		color: $grey;
+		float: right;
+		width: 50%;
+		text-align: right;
+		padding-right: 30px;
+		line-height: 100px;
+		background: url('../images/icons/icon-menu-toggle.png') no-repeat right center;
+		@include image-2x('../images/icons/icon-menu-toggle@2x.png', 8px, 34px);
+		&:hover {
+			color: $blue;
+		}
+		@include respond($laptop) {
+			display: none;
+		}
+	}
+}
